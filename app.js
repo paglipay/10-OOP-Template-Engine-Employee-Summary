@@ -50,11 +50,25 @@ const prompts = async function () {
             employees.push(empObj);
         }
         else if (answers.role === 'Engineer') {
-            const empObj = new Engineer(answers.name, answers.id, answers.email, "1231231234");
+            const last_answers = await inquirer
+                .prompt([
+                    {
+                        message: "Github:",
+                        name: "github"
+                    }
+                ]);
+            const empObj = new Engineer(answers.name, answers.id, answers.email, last_answers.github);
             employees.push(empObj);
         }
         else if (answers.role === 'Intern') {
-            const empObj = new Intern(answers.name, answers.id, answers.email, "1231231234");
+            const last_answers = await inquirer
+                .prompt([
+                    {
+                        message: "School:",
+                        name: "school"
+                    }
+                ]);
+            const empObj = new Intern(answers.name, answers.id, answers.email, last_answers.school);
             employees.push(empObj);
         }
 
